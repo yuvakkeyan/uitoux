@@ -7,16 +7,19 @@ const ProductSchema = new mongoose.Schema({
         trim: true
     },
     description:{
-        type: Number,
+        type: String,
         required: true,
+    },
+    image_url:{
+        type: String,
     },
     vendor_id:{
         type:  mongoose.Schema.Types.ObjectId,
-        ref: "vendor"
+        ref: "User"
     },
     status:{
         type: String,
-        enum: ["COMPLETED", "INCOMPLETED"]
+        enum: ["AVAILABLE", "OUT_OF_STOCK"]
     },
     quantity_available:{
         type: Number,

@@ -1,8 +1,8 @@
 const service = require("./product.service");
 
-const getProduct = async function(req,res){
+const getProducts = async function(req,res){
     try{
-        var Product = await service.getProduct(req);
+        var Product = await service.getProducts(req);
         res.status(200).send(Product)
     }catch(err){
         res.status(500).send("Internal Server Error");
@@ -20,9 +20,11 @@ const getProductById = async function(req,res){
 
 const saveProduct = async function(req,res){
     try {
-        var Product = await service.saveProduct(req);
+        console.log("--------req.body.data", req.body.data);
+        await service.saveProduct(req);
         res.status(200).send("Product saved succesfully");
     }catch(err){
+        console.log(err);
     res.status(500).send("Internal Server Error");
 }
 };
@@ -57,7 +59,7 @@ const countProduct = async function(req,res){
  };
 
 module.exports = {
-    getProduct,
+    getProducts,
     getProductById,
     saveProduct,
     updateProduct,
